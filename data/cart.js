@@ -47,3 +47,21 @@ export function removeFromCart(productId) {
   cart = cartUpdated;
   saveToStorage();
 };
+
+export function updateCartQuantity() {
+let cartQuantity = 0;
+
+cart.forEach((cartItem) => {
+  cartQuantity += cartItem.quantity;
+});
+
+  const cartQuantityElement = document.querySelector('.js-cart-quantity');
+  if (cartQuantityElement) {
+    cartQuantityElement.innerHTML = `${cartQuantity}`;
+  }
+
+  const returnToHomeElement = document.querySelector('.js-return-to-home-link');
+  if (returnToHomeElement) {
+    returnToHomeElement.innerHTML = `${cartQuantity} items`;
+  }
+}
